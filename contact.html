@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contact – The Rounder Circle</title>
@@ -45,36 +46,38 @@
         <p>
           We’d love to hear from you! Please reach out us via the form below or directly at TheRounderCircle@gmail.com with any questions or booking inquiries
         </p>
-        <form action="mailto:you@roundercircle.com" method="post" enctype="text/plain">
-          <label for="name">Name</label><br />
-          <input
-            type="text"
-            id="name"
-            name="Name"
-            placeholder="Your name"
-            required
-          />
 
-          <label for="email">Email</label><br />
-          <input
-            type="email"
-            id="email"
-            name="Email"
-            placeholder="you@example.com"
-            required
-          />
+        <!-- Formspree form -->
+<form action="https://formspree.io/f/mblydnav" method="POST">
+  <!-- redirect to your thank-you page on success -->
+  <input type="hidden" name="_next" value="https://theroundercircle.com/thank-you.html" />
 
-          <label for="message">Message</label><br />
-          <textarea
-            id="message"
-            name="Message"
-            rows="5"
-            placeholder="Write your message…"
-            required
-          ></textarea>
+  <label for="email">
+    Your email:<br />
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="you@example.com"
+      required
+    />
+  </label>
 
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
+  <label for="message">
+    Your message:<br />
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      placeholder="Write your message…"
+      required
+    ></textarea>
+  </label>
+
+  <button type="submit" class="btn btn-primary">Send Message</button>
+</form>
+
+
       </div>
 
       <!-- Right: image -->
@@ -84,6 +87,7 @@
     </div>
   </main>
 
+
  <!-- Social Links Footer -->
   <footer class="social-footer">
     <a href="https://instagram.com/the_rounder_circle" aria-label="Instagram">
@@ -92,8 +96,14 @@
     <a href="https://www.youtube.com/@TheRounderCircle" aria-label="YouTube">
       <i class="fab fa-youtube"></i>
     </a>
+
+        <!-- California poppies graphic -->
+    <img
+      src="assets/images/calpoppies.png"
+      alt="Illustration of California poppies"
+      class="footer-graphic"
+    />
   </footer>
 
-  <script src="assets/js/main.js"></script>
 </body>
 </html>
