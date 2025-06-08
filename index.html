@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Rounder Circle</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@500;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome for social icons -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Hero height & bottom-aligned text override -->
+  <style>
+    .hero {
+      /* make it much taller */
+      min-height: 75vh;
+      /* position text at bottom */
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      /* adjust top/bottom padding */
+      padding-top: var(--space-sm);
+      padding-bottom: var(--space-xl);
+    }
+    .hero .container {
+      /* ensure it sits above any BG overlay */
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with Site Brand and Menu Bar -->
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html">The Rounder Circle</a>
+    </div>
+    <nav class="menu-bar">
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="shows.html">Shows</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section (taller, text at bottom) -->
+  <main class="hero">
+    <div class="container">
+      <h1>The Rounder Circle</h1>
+      <p>
+        The Rounder Circle is a Bay Area based Country / Bluegrass band, performing a wide range of beloved hits, traditional standards, and originals. With sweet harmonies and exceptional instrumentals, The Rounder Circle is sure to bring an excellent time!
+      </p>
+      <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+    </div>
+  </main>
+
+ <!-- Social Links Footer -->
+  <footer class="social-footer">
+    <a href="https://instagram.com/the_rounder_circle" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@TheRounderCircle" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </footer>
+
+</body>
+</html>

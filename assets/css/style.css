@@ -1,0 +1,414 @@
+/*===================================
+  1. Google Fonts Import
+===================================*/
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@500;700&display=swap');
+
+/*===================================
+  2. Root Variables
+===================================*/
+:root {
+  /* Grounds & Text */
+  --clr-bg:          #F8F4ED;  /* soft cream */
+  --clr-text:        #2F2E2E;  /* deep slate */
+
+  /* Forest Greens */
+  --clr-primary:     #386641;  /* deep forest */
+  --clr-secondary:   #A7C957;  /* mossy lime */
+
+  /* Warm Accents */
+  --clr-accent:      #E07A5F;  /* terra cotta */
+  --clr-accent2:     #F4A261;  /* warm apricot */
+
+  /* Neutrals */
+  --clr-border:      #D3C2B0;  /* light wood grain */
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 64px;
+
+  /* Typography */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body:    'Merriweather', serif;
+}
+
+/*===================================
+  3. Reset & Base
+===================================*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  background: var(--clr-bg);
+  color: var(--clr-text);
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/*===================================
+  4. Utility Classes
+===================================*/
+.container {
+  width: min(90%, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+.btn {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+/*===================================
+  5. Header & Navigation
+===================================*/
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--clr-primary);
+  padding: var(--space-sm) var(--space-md);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.site-header .brand a {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: white;
+}
+.menu-bar ul {
+  list-style: none;
+  display: flex;
+}
+.menu-bar li + li {
+  margin-left: var(--space-lg);
+}
+.menu-bar a {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: white;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.menu-bar a:hover,
+.menu-bar a.active {
+  background: rgba(255,255,255,0.2);
+}
+
+/*===================================
+  6. Hero Section
+===================================*/
+.hero {
+  background: url('../images/header-bg.jpg') center/cover no-repeat;
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: var(--space-sm) 0 var(--space-xl);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+.hero .container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  margin-bottom: var(--space-sm);
+  color: white;
+}
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-md);
+  color: white;
+}
+.btn-primary {
+  background: var(--clr-accent);
+  color: white;
+  padding: var(--space-sm) var(--space-lg);
+}
+.btn-primary:hover {
+  background: var(--clr-accent2);
+}
+
+/*===================================
+  7. Intro / Cards Section
+===================================*/
+.main-content .intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+.main-content .intro img {
+  flex: 1 1 300px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.main-content .intro .description {
+  flex: 2 1 400px;
+}
+.cards {
+  margin: var(--space-xl) 0;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: var(--space-lg);
+}
+.card {
+  background: white;
+  border: 1px solid var(--clr-border);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.card h3 {
+  font-family: var(--font-heading);
+  margin: var(--space-md);
+}
+.card p {
+  margin: 0 var(--space-md) var(--space-md);
+}
+
+/*===================================
+  8. Contact Page Layout & Form
+===================================*/
+.contact-content {
+  display: flex;
+  gap: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+.contact-form {
+  flex: 1;
+}
+.contact-image {
+  flex: 1;
+}
+.contact-image img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+/* Form Controls */
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-md);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--clr-text);
+  background: #fff;
+  border: 1px solid var(--clr-border);
+  border-radius: 6px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--clr-accent);
+  box-shadow: 0 0 0 3px rgba(224,122,95,0.2);
+}
+.btn-primary {
+  background: var(--clr-accent);
+  color: white;
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  border-radius: 6px;
+}
+.btn-primary:hover {
+  background: var(--clr-accent2);
+  transform: translateY(-2px);
+}
+
+/*===================================
+  9. Social Footer
+===================================*/
+.social-footer {
+  text-align: center;
+  padding: var(--space-md) 0;
+  background: var(--clr-bg);
+}
+.social-footer a {
+  margin: 0 var(--space-sm);
+  font-size: 2rem;
+  color: var(--clr-text);
+  transition: transform 0.2s, color 0.2s;
+}
+.social-footer a:hover {
+  transform: translateY(-4px);
+  color: var(--clr-primary);
+}
+
+
+/*===================================
+ 10. Responsive Breakpoints
+===================================*/
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+    padding: var(--space-sm) var(--space-md);
+  }
+  .menu-bar {
+    margin-top: var(--space-sm);
+  }
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
+  .main-content .intro,
+  .cards .grid,
+  .contact-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .cards .grid {
+    display: block;
+  }
+  .card {
+    margin-bottom: var(--space-lg);
+  }
+}
+
+/*===================================
+  Shows Page: center & stack lines
+===================================*/
+.show-list {
+  list-style: none;
+  margin: var(--space-md) 0 var(--space-xl);
+  padding: 0;
+}
+.show-list li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--clr-border);
+}
+.show-list li:last-child {
+  border-bottom: none;
+}
+
+/* each line centered */
+.show-list .show-date,
+.show-list .show-location,
+.show-list .show-cost {
+  display: block;
+  text-align: center;
+  font-family: var(--font-body);
+  color: var(--clr-text);
+  margin: var(--space-xs) 0;
+}
+
+/* highlight the date */
+.show-list .show-date {
+  font-family: var(--font-heading);
+  color: var(--clr-primary);
+  font-size: 1.1rem;
+}
+
+/* Remove per-item dividers */
+.show-list li {
+  border-bottom: none;
+}
+
+/* Style the single section divider */
+.section-divider {
+  border: 0;
+  border-top: 2px solid var(--clr-border);
+  margin: var(--space-xl) 0;
+}
+
+.container section > h1,
+.container section > h2 {
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+/*===================================
+  Contact Page: extra spacing & bold labels
+===================================*/
+.contact-form p {
+  /* separate the paragraph from the form */
+  margin-bottom: var(--space-md);
+}
+
+.contact-form label {
+  /* bold each field header */
+  font-weight: 700;
+}
+
+/*===================================
+  Band Members: rounded square portraits
+===================================*/
+.band-members .grid .member img {
+  width: 200px;               /* same width */
+  height: 200px;              /* same height */
+  object-fit: cover;          /* crop/scale to fill */
+  border-radius: 16px;        /* adjust for desired roundness */
+  display: block;
+  margin: 0 auto var(--space-md); /* center and add bottom margin */
+}
+
+/*===================================
+  Band Members: center text under portraits
+===================================*/
+.band-members .grid .member {
+  text-align: center;    /* centers img, h3, and p */
+}
+
+/* Optional: add spacing between name and role */
+.band-members .grid .member h3 {
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+.band-members .grid .member p {
+  margin: 0;
+  font-style: italic;
+  color: var(--clr-secondary);
+}
+
