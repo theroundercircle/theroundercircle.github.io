@@ -282,6 +282,10 @@ textarea:focus {
 .show-list .show-location {
   font-style: italic;
 }
+
+.show-venue {
+  font-weight: bold;
+}
 .section-divider {
   border: 0;
   border-top: 2px solid var(--clr-border);
@@ -406,4 +410,46 @@ textarea:focus {
   padding-right: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.show-datetime {
+  font-weight: bold;
+  margin-bottom: 0.25em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;  /* Align date and time nicely */
+  gap: 0.3em;
+}
+
+.show-date {
+  font-weight: normal;
+}
+
+.show-time {
+  font-weight: 400;
+  font-style: bold;
+  color: #555;
+}
+
+.show-venue {
+  font-weight: bold;
+  display: inline;  /* keep on the same line */
+}
+
+.show-event {
+  display: inline;
+  font-weight: normal;
+  margin-left: 0.15em;
+}
+
+.show-event a {
+  text-decoration: underline;
+  color: var(--clr-accent, #25568c);
+  font-weight: normal;
+}
+
+.show-event a:link,
+.show-event a:visited {
+  color: #25568c !important;  /* Replace with your desired color */
+  text-decoration: underline !important;
 }
