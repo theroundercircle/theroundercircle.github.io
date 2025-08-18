@@ -263,7 +263,7 @@ textarea:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--space-sm) 0;
+  padding: var(--space-md) 0;
 }
 .show-list .show-date,
 .show-list .show-location,
@@ -289,7 +289,7 @@ textarea:focus {
 .section-divider {
   border: 0;
   border-top: 2px solid var(--clr-border);
-  margin: var(--space-xl) 0;
+  margin: var(--space-xl) 2;
 }
 .container section > h1,
 .container section > h2 {
