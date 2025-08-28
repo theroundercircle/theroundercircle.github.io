@@ -25,20 +25,31 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="site-header">
-    <div class="brand">
-      <a href="index.html">The Rounder Circle</a>
-    </div>
-    <nav class="menu-bar">
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-        <li><a href="shows.html">Shows</a></li>
-        <li><a href="videos.html">Videos</a></li>
-      </ul>
-    </nav>
-  </header>
+<!-- Header -->
+<header class="site-header">
+  <div class="brand">
+    <a href="index.html">The Rounder Circle</a>
+  </div>
+  <nav class="menu-bar">
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="shows.html">Shows</a></li>
+      <li><a href="videos.html">Videos</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Substack Link Section -->
+<div class="substack-banner" id="substackBanner">
+  <span class="banner-text">
+    <a href="https://theroundercircle.substack.com" target="_blank">Subscribe to our newsletter on Substack</a>
+  </span>
+  <button class="banner-close" onclick="document.getElementById('substackBanner').style.display='none'">
+    &times;
+  </button>
+</div>
+
 
   <!-- Two-Column Form + Image -->
   <main class="container" style="padding: var(--space-xl) 0;">

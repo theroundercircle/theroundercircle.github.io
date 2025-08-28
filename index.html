@@ -19,10 +19,10 @@
   />
 
   <!-- Font Awesome for social icons -->
-    <link
+  <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+  />
 
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
@@ -30,21 +30,73 @@
   <!-- Hero height & bottom-aligned text override -->
   <style>
     .hero {
-      /* make it much taller */
       min-height: 75vh;
-      /* position text at bottom */
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      /* adjust top/bottom padding */
       padding-top: var(--space-sm);
       padding-bottom: var(--space-xl);
     }
     .hero .container {
-      /* ensure it sits above any BG overlay */
       position: relative;
       z-index: 1;
       text-align: center;
+    }
+
+    /* Popup styles */
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      z-index: 9999;
+    }
+    .popup-content {
+      position: relative;
+      background: #f8f4ec;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: fadeIn 0.4s ease;
+    }
+    .popup-content h2 {
+      margin-bottom: 1rem;
+    }
+    .popup-content input[type="email"] {
+      width: 100%;
+      padding: 0.7rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .popup-content button {
+      background: #2b6cb0;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .popup-content button:hover {
+      background: #2c5282;
+    }
+    .close-btn {
+      position: absolute;
+      top: 15px; right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to   { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
@@ -76,18 +128,17 @@
     </div>
   </main>
 
-<!-- Social Links Footer -->
+  <!-- Social Links Footer -->
   <footer class="social-footer">
     <a href="https://instagram.com/theroundercircle" aria-label="Instagram">
       <i class="fab fa-instagram"></i>
     </a>
-        <a href="https://soundcloud.com/the-rounder-circle" aria-label="SoundCloud">
+    <a href="https://soundcloud.com/the-rounder-circle" aria-label="SoundCloud">
       <i class="fab fa-soundcloud"></i>
     </a>
     <a href="https://www.youtube.com/@TheRounderCircle" aria-label="YouTube">
       <i class="fab fa-youtube"></i>
     </a>
-        <!-- California poppies graphic -->
     <img
       src="assets/images/calpoppies.png"
       alt="Illustration of California poppies"
@@ -95,6 +146,34 @@
     />
     <p>&copy; 2025 The Rounder Circle</p>
   </footer>
+
+  <!-- Email Signup Popup -->
+  <div id="emailPopup" class="popup-overlay">
+    <div class="popup-content" width="500" height="320">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+
+      <iframe src="https://theroundercircle.substack.com/embed" width="480" height="320" style="border:0px solid #EEE; ;" frameborder="0" scrolling="no"></iframe>
+    </div>
+  </div>
+
+  <!-- Popup Script -->
+  <script>
+    window.onload = function() {
+      // Show popup every time
+      setTimeout(() => {
+        document.getElementById("emailPopup").style.visibility = "visible";
+      }, 1000);
+
+      // Close popup when form is submitted
+      document.getElementById("substackForm").addEventListener("submit", function() {
+        closePopup();
+      });
+    };
+
+    function closePopup() {
+      document.getElementById("emailPopup").style.visibility = "hidden";
+    }
+  </script>
 
 </body>
 </html>
