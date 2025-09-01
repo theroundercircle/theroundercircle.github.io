@@ -389,7 +389,7 @@ textarea:focus {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
-
+q
 .video-grid.large {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
