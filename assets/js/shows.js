@@ -20,14 +20,15 @@ function parseLocalDate(dateStr) {
       upcoming.sort((a, b) => parseLocalDate(a.date) - parseLocalDate(b.date));
       past.sort((a, b) => parseLocalDate(b.date) - parseLocalDate(a.date));
   
-      renderShows(upcoming, document.getElementById('upcoming-shows'));
-      renderShows(past, document.getElementById('past-shows'));
+      // Render: links only for upcoming shows
+      renderShows(upcoming, document.getElementById('upcoming-shows'), true);
+      renderShows(past, document.getElementById('past-shows'), false);
     } catch (err) {
       console.error('Error loading shows:', err);
     }
   }
   
-  function renderShows(list, container) {
+  function renderShows(list, container, showLinks) {
     container.innerHTML = list.map(show => {
       const showDate = parseLocalDate(show.date);
       return `
@@ -37,7 +38,7 @@ function parseLocalDate(dateStr) {
             ${show.time ? `<span class="show-time">· ${show.time}</span>` : ''}
           </div>
           <span class="show-venue">${show.venue}</span>
-          ${show.link ? `
+          ${showLinks && show.link ? `
             <span class="show-event">
               <a href="${show.link}" target="_blank" rel="noopener noreferrer">${show.event || 'Tickets'}</a>
             </span>` : ''}
@@ -47,5 +48,4 @@ function parseLocalDate(dateStr) {
     }).join('');
   }
   
-  loadShows();
-  
+  loadShows();  
