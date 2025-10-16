@@ -34,7 +34,7 @@ function parseLocalDate(dateStr) {
       return `
         <li>
           <div class="show-datetime">
-            <span class="show-date">${showDate.toLocaleDateString('en-US', { dateStyle: 'long' })}</span>
+            <span class="show-date">${showDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
             ${show.time ? `<span class="show-time">· ${show.time}</span>` : ''}
           </div>
           <span class="show-venue">${show.venue}</span>
@@ -47,5 +47,6 @@ function parseLocalDate(dateStr) {
       `;
     }).join('');
   }
+  
   
   loadShows();  
