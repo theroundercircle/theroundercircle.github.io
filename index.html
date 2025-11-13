@@ -27,23 +27,8 @@
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
 
-  <!-- Hero height & bottom-aligned text override -->
+  <!-- Popup styles -->
   <style>
-    .hero {
-      min-height: 75vh;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-top: var(--space-sm);
-      padding-bottom: var(--space-xl);
-    }
-    .hero .container {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-    }
-
-    /* Popup styles */
     .popup-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -107,8 +92,14 @@
     <div class="brand">
       <a href="index.html">The Rounder Circle</a>
     </div>
+    <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
     <nav class="menu-bar">
       <ul>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="shows.html">Shows</a></li>
@@ -173,6 +164,11 @@
 
     function closePopup() {
       document.getElementById("emailPopup").style.visibility = "hidden";
+    }
+
+    function toggleMenu() {
+      document.querySelector('.menu-bar').classList.toggle('open');
+      document.querySelector('.menu-toggle').classList.toggle('open');
     }
   </script>
 

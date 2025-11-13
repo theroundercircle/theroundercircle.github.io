@@ -91,9 +91,6 @@ img {
   list-style: none;
   display: flex;
 }
-.menu-bar li + li {
-  margin-left: var(--space-lg);
-}
 .menu-bar a {
   font-family: var(--font-body);
   font-size: 1rem;
@@ -107,17 +104,105 @@ img {
   background: rgba(255,255,255,0.2);
 }
 
+@media (min-width: 769px) {
+  .menu-bar ul {
+    flex-direction: row;
+  }
+  .menu-bar li + li {
+    margin-left: var(--space-lg);
+  }
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+.menu-toggle .bar {
+  width: 28px;
+  height: 4px;
+  background: white;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+.menu-toggle.open .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.open .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-md);
+    z-index: 1101;
+  }
+  .menu-bar {
+    position: absolute;
+    top: 60px;
+    right: var(--space-md);
+    background: var(--clr-primary);
+    width: 200px;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    display: none;
+    z-index: 1001;
+    margin: 0;
+  }
+  .menu-bar.open {
+    display: flex;
+  }
+  .menu-bar ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    align-items: stretch;
+    display: flex;
+  }
+  .menu-bar li {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+  .menu-bar a {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    text-align: center;
+    margin: 0;
+  }
+}
+
 /*===================================
   6. Hero Section
 ===================================*/
 .hero {
-  background: url('../images/header-bg.jpg') center/cover no-repeat;
+  background: url('../images/band-photo-2.png') center/cover no-repeat;
   position: relative;
   min-height: 75vh;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
-  padding: var(--space-sm) 0 var(--space-xl);
+  padding: var(--space-xl) 0 var(--space-sm);
 }
 .hero::after {
   content: '';
@@ -144,14 +229,15 @@ img {
   margin-bottom: var(--space-md);
 }
 .btn-primary {
-  background: var(--clr-accent);
+  background: #2563eb; /* blue-600 */
   color: white;
   padding: var(--space-sm) var(--space-lg);
   border: none;
   border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
 }
 .btn-primary:hover {
-  background: var(--clr-accent2);
+  background: #1d4ed8; /* blue-700 */
   transform: translateY(-2px);
 }
 

@@ -22,18 +22,24 @@
     <div class="brand">
       <a href="index.html">The Rounder Circle</a>
     </div>
+    <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
     <nav class="menu-bar">
       <ul>
+        <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="shows.html">Shows</a></li>
-        <li><a href="videos.html">Videos</a></li>
+        <li><a href="videos.html" class="active">Videos</a></li>
         <li><a href="epk.html">EPK</a></li>
       </ul>
     </nav>
   </header>
 
-<main class="content">
+<main class="content" style="margin-top: 2.5rem;">
   <div class="container">
     <div class="video-grid large">
       <iframe src="https://www.youtube.com/embed/7r2QJmYLX9g" allowfullscreen></iframe>
@@ -66,6 +72,13 @@
     />
     <p>&copy; 2025 The Rounder Circle</p>
   </footer>
+
+<script>
+function toggleMenu() {
+  document.querySelector('.menu-bar').classList.toggle('open');
+  document.querySelector('.menu-toggle').classList.toggle('open');
+}
+</script>
 
 </body>
 </html>
