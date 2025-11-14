@@ -29,23 +29,82 @@ function parseLocalDate(dateStr) {
   }
   
   function renderShows(list, container, showLinks) {
-    container.innerHTML = list.map(show => {
-      const showDate = parseLocalDate(show.date);
-      return `
-        <li>
-          <div class="show-datetime">
-            <span class="show-date">${showDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
-            ${show.time ? `<span class="show-time">· ${show.time}</span>` : ''}
-          </div>
-          <span class="show-venue">${show.venue}</span>
-          ${showLinks && show.link ? `
-            <span class="show-event">
-              <a href="${show.link}" target="_blank" rel="noopener noreferrer">${show.event || 'Tickets'}</a>
-            </span>` : ''}
-          <span class="show-location">${show.location}</span>
-        </li>
-      `;
-    }).join('');
+    // If it's past shows, group by venue
+    if (!showLinks) {
+      const groupedByVenue = {};
+      list.forEach(show => {
+        if (!groupedByVenue[show.venue]) {
+          groupedByVenue[show.venue] = [];
+        }
+        groupedByVenue[show.venue].push(show);
+      });
+
+      container.innerHTML = Object.entries(groupedByVenue).map(([venue, shows]) => {
+        const parsedDates = shows.map(show => parseLocalDate(show.date));
+        const years = new Set(parsedDates.map(d => d.getFullYear()));
+        const sameYear = years.size === 1;
+
+        let datesList;
+        if (sameYear) {
+          // Group by month within the same year
+          const byMonth = {};
+          shows.forEach((show, index) => {
+            const showDate = parsedDates[index];
+            const month = showDate.toLocaleDateString('en-US', { month: 'short' });
+            if (!byMonth[month]) byMonth[month] = [];
+            byMonth[month].push(showDate.getDate());
+          });
+
+          const monthStrs = Object.entries(byMonth).map(([month, days]) => {
+            return `${month} ${days.join(', ')}`;
+          }).join(', ');
+
+          datesList = monthStrs + ', ' + parsedDates[0].getFullYear();
+        } else {
+          // If dates span multiple years, group by month/year
+          const byMonthYear = {};
+          shows.forEach((show, index) => {
+            const showDate = parsedDates[index];
+            const monthYear = showDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+            if (!byMonthYear[monthYear]) byMonthYear[monthYear] = [];
+            byMonthYear[monthYear].push(showDate.getDate());
+          });
+
+          datesList = Object.entries(byMonthYear).map(([monthYear, days]) => {
+            return `${monthYear.split(' ')[0]} ${days.join(', ')}, ${monthYear.split(' ')[1]}`;
+          }).join(', ');
+        }
+
+        return `
+          <li>
+            <div class="show-datetime">
+              <span class="show-date">${datesList}</span>
+            </div>
+            <span class="show-venue">${venue}</span>
+            <span class="show-location">${shows[0].location}</span>
+          </li>
+        `;
+      }).join('');
+    } else {
+      // For upcoming shows, render normally
+      container.innerHTML = list.map(show => {
+        const showDate = parseLocalDate(show.date);
+        return `
+          <li>
+            <div class="show-datetime">
+              <span class="show-date">${showDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
+              ${show.time ? `<span class="show-time">· ${show.time}</span>` : ''}
+            </div>
+            <span class="show-venue">${show.venue}</span>
+            ${showLinks && show.link ? `
+              <span class="show-event">
+                <a href="${show.link}" target="_blank" rel="noopener noreferrer">${show.event || 'Tickets'}</a>
+              </span>` : ''}
+            <span class="show-location">${show.location}</span>
+          </li>
+        `;
+      }).join('');
+    }
   }
   
   
