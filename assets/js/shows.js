@@ -88,22 +88,22 @@ function parseLocalDate(dateStr) {
     } else {
       // For upcoming shows, render normally
       container.innerHTML = list.map(show => {
-        const showDate = parseLocalDate(show.date);
-        return `
-          <li>
-            <div class="show-datetime">
-              <span class="show-date">${showDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
-              ${show.time ? `<span class="show-time">· ${show.time}</span>` : ''}
-            </div>
-            <span class="show-venue">${show.venue}</span>
-            ${showLinks && show.link ? `
-              <span class="show-event">
-                <a href="${show.link}" target="_blank" rel="noopener noreferrer">${show.event || 'Tickets'}</a>
-              </span>` : ''}
-            <span class="show-location">${show.location}</span>
-          </li>
-        `;
-      }).join('');
+          const showDate = parseLocalDate(show.date);
+          return `
+            <li>
+              <div class="show-datetime">
+                <span class="show-date">${showDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                ${show.time ? `<span class="show-time">· ${show.time}</span>` : ''}
+              </div>
+              <span class="show-venue">${show.venue}</span>
+              ${show.event ? `
+                <span class="show-event">
+                  ${show.link ? `<a href="${show.link}" target="_blank" rel="noopener noreferrer">${show.event}</a>` : show.event}
+                </span>` : ''}
+              <span class="show-location">${show.location}</span>
+            </li>
+          `;
+        }).join('');
     }
   }
   
