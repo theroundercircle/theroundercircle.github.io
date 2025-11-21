@@ -1,9 +1,17 @@
 [
     {
+      "date": "2026-1-30",
+      "time": "7 - 8:45pm",
+      "venue": "Vinyl Room",
+      "event": "Album Release Show! Stick around after 9pm for a party!",
+      "link": "",
+      "location": "221 Park Rd, Burlingame, CA 94010"
+    },
+    {
       "date": "2025-12-03",
       "time": "7:30 - 9:30pm",
       "venue": "Pioneer Saloon",
-      "event": "Stay for Michael O'Fiesh, 9:30 - 11pm!",
+      "event": "Joint show with Michael O'Fiesh (with TRC guests?) - 9:30 - 11pm!",
       "link": "",
       "location": "2925 Woodside Rd, Woodside, CA 94062"
     },
