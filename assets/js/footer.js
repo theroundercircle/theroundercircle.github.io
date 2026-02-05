@@ -4,13 +4,29 @@ class MainFooter extends HTMLElement {
 	connectedCallback() {
 		this.innerHTML = `
 		<footer class="social-footer">
-		    <a href="https://instagram.com/theroundercircle" aria-label="Instagram">
+		      <a href="https://instagram.com/theroundercircle" aria-label="Instagram"
+		      target="_blank"
+		      rel="noopener noreferrer">
 		      <i class="fab fa-instagram"></i>
 		    </a>
-			<a href="https://soundcloud.com/the-rounder-circle" aria-label="SoundCloud">
-		      <i class="fab fa-soundcloud"></i>
+		      <a href="https://www.tiktok.com/@theroundercircle" aria-label="TikTok"
+			target="_blank"
+			rel="noopener noreferrer">
+			<i class="fab fa-tiktok"></i>
 		    </a>
-		    <a href="https://www.youtube.com/@TheRounderCircle" aria-label="YouTube">
+		      <a href="https://music.apple.com/us/artist/the-rounder-circle/1869651207" aria-label="Apple Music"
+		        target="_blank"
+			rel="noopener noreferrer">
+			<i class="fab fa-itunes"></i>
+		    </a>
+		      <a href="https://open.spotify.com/artist/5ahm3pykpH08nU4nfKUt9E" aria-label="Spotify"
+		        target="_blank"
+			rel="noopener noreferrer">
+			<i class="fab fa-spotify"></i>
+		    </a>
+		      <a href="https://www.youtube.com/@TheRounderCircle" aria-label="YouTube"
+                       target = "_blank"
+		       rel="noopener noreferrer">
 		      <i class="fab fa-youtube"></i>
 		    </a>
 

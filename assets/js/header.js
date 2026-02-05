@@ -31,7 +31,10 @@ class MainHeader extends HTMLElement {
 			<li><a href="epk.html">EPK</a></li>
 		      </ul>
 		    </nav>
-		  </header>`;
+		  </header>
+		  <div class="header-banner">
+		    <p> New Music Out Now! <a href="https://ffm.to/californiabound/" target=_blank rel="noopener noreferrer">Listen here!
+		  </div>`;
 		
 		const currentPath = window.location.pathname.split("/").pop() || "index.html";
 		const navLinks = this.querySelectorAll('.menu-bar a');
@@ -42,7 +45,14 @@ class MainHeader extends HTMLElement {
 				link.classList.add('active');
 			}
 		});
-
+		
+		// Banner timer
+		setTimeout(() => {
+			const banner = this.querySelector('.header-banner');
+			if (banner) {
+				banner.style.display = 'none';
+			}
+		}, 60000);
 	}
 }
   
