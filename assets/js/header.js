@@ -5,7 +5,9 @@ class MainHeader extends HTMLElement {
 		this.innerHTML = `
 		<header class="site-header">
 		    <div class="brand">
-		      <a href="index.html">The Rounder Circle</a>
+		      <a href="index.html">
+			<img src="assets/images/front.png" alt="The Rounder Circle" class="header-logo">
+		      </a>
 		    </div>
 		    <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">
 		      <span class="bar"></span>
