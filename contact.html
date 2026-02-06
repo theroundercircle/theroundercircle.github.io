@@ -22,11 +22,40 @@
 
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
-  <script src="assets/js/header.js" defer></script>
-  <script src="assets/js/footer.js" defer></script> 
 </head>
 <body>
-<main-header></main-header>
+
+  <!-- Header with Site Brand and Menu Bar -->
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html">The Rounder Circle</a>
+    </div>
+    <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav class="menu-bar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="shows.html">Shows</a></li>
+        <li>
+          <a
+            href="https://the-rounder-circle-shop.fourthwall.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Merch
+          </a>
+        </li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="epk.html">EPK</a></li>
+      </ul>
+    </nav>
+  </header>
+
 <!-- Substack Link Section -->
 <div class="substack-banner" id="substackBanner">
   <span class="banner-text">
@@ -88,6 +117,34 @@
     </div>
   </main>
 
-  <main-footer></main-footer>
+
+<!-- Social Links Footer -->
+  <footer class="social-footer">
+    <a href="https://instagram.com/theroundercircle" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+        <a href="https://soundcloud.com/the-rounder-circle" aria-label="SoundCloud">
+      <i class="fab fa-soundcloud"></i>
+    </a>
+    <a href="https://www.youtube.com/@TheRounderCircle" aria-label="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+
+        <!-- California poppies graphic -->
+    <img
+      src="assets/images/calpoppies.png"
+      alt="Illustration of California poppies"
+      class="footer-graphic"
+    />
+    <p>&copy; 2025 The Rounder Circle</p>
+  </footer>
+  
+<script>
+function toggleMenu() {
+  document.querySelector('.menu-bar').classList.toggle('open');
+  document.querySelector('.menu-toggle').classList.toggle('open');
+}
+</script>
+
 </body>
 </html>
