@@ -6,7 +6,7 @@ class MainHeader extends HTMLElement {
 		<header class="site-header">
 		    <div class="brand">
 		      <a href="index.html">
-			<img src="assets/images/front.png" alt="The Rounder Circle" class="header-logo">
+		      The Rounder Circle
 		      </a>
 		    </div>
 		    <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">

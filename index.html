@@ -118,14 +118,14 @@
 	  setTimeout(() => {
 	    const popup = document.getElementById("emailPopup");
   	    if (popup) {
-	      popup.styple.visibility = "visible";
+	      popup.style.visibility = "visible";
 	      sessionStorage.setItem('popupShown', 'true');
 	    }
 	  }, 1000);
 	}
     };
 
-    fucntion closePopup() {
+    function closePopup() {
 	document.getElementById("emailPopup").style.visibility = "hidden";
     }
   </script>
