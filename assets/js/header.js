@@ -2,6 +2,17 @@
 
 class MainHeader extends HTMLElement {
 	connectedCallback() {
+		const hasSeenBanner = sessionStorage.getItem('bannerSeen');
+
+		let bannerHTML = '';
+		if (!hasSeenBanner) {
+			bannerHTML = `
+			<div class="header-banner">
+			    <p> New Music Out Now! <a href="https://ffm.to/californiabound/" target=_blank rel="noopener noreferrer">Listen here!
+			  </div>
+			`;
+		}
+
 		this.innerHTML = `
 		<header class="site-header">
 		    <div class="brand">
@@ -34,9 +45,7 @@ class MainHeader extends HTMLElement {
 		      </ul>
 		    </nav>
 		  </header>
-		  <div class="header-banner">
-		    <p> New Music Out Now! <a href="https://ffm.to/californiabound/" target=_blank rel="noopener noreferrer">Listen here!
-		  </div>`;
+		${bannerHTML}`;
 		
 		const currentPath = window.location.pathname.split("/").pop() || "index.html";
 		const navLinks = this.querySelectorAll('.menu-bar a');
@@ -48,6 +57,7 @@ class MainHeader extends HTMLElement {
 			}
 		});
 		
+		sessionStorage.setItem('bannerSeen', 'true');
 		// Banner timer
 		setTimeout(() => {
 			const banner = this.querySelector('.header-banner');
