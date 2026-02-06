@@ -610,16 +610,11 @@ q
 /*===================================
   14. Logo
 ===================================*/
-.brand a {
-  display: flex;
-  align-items: center;
-}
 
 .header-logo{
-  height: 50px;
+  height: 100px;
   width: auto;
   display: block;
-  transition: transform 0.3s ease;
 }
 
 .header-logo:hover {
@@ -627,7 +622,8 @@ q
 }
 
 .brand{
-  font-size: 0;
+  display: flex;
+  align-items: center;
 }
 
 
