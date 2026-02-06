@@ -84,40 +84,11 @@
       to   { opacity: 1; transform: scale(1); }
     }
   </style>
+  <script src="assets/js/header.js" defer></script>
+  <script src="assets/js/footer.js" defer></script>
 </head>
 <body>
-
-  <!-- Header with Site Brand and Menu Bar -->
-  <header class="site-header">
-    <div class="brand">
-      <a href="index.html">The Rounder Circle</a>
-    </div>
-    <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-    <nav class="menu-bar">
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="shows.html">Shows</a></li>
-        <li>
-          <a
-            href="https://the-rounder-circle-shop.fourthwall.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Merch
-          </a>
-        </li>
-        <li><a href="videos.html">Videos</a></li>
-        <li><a href="epk.html">EPK</a></li>
-      </ul>
-    </nav>
-  </header>
-
+  <main-header></main-header>
   <!-- Hero Section (taller, text at bottom) -->
   <main class="hero">
     <div class="container">
@@ -128,26 +99,7 @@
       <a href="contact.html" class="btn btn-primary">Get in Touch</a>
     </div>
   </main>
-
-  <!-- Social Links Footer -->
-  <footer class="social-footer">
-    <a href="https://instagram.com/theroundercircle" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://soundcloud.com/the-rounder-circle" aria-label="SoundCloud">
-      <i class="fab fa-soundcloud"></i>
-    </a>
-    <a href="https://www.youtube.com/@TheRounderCircle" aria-label="YouTube">
-      <i class="fab fa-youtube"></i>
-    </a>
-    <img
-      src="assets/images/calpoppies.png"
-      alt="Illustration of California poppies"
-      class="footer-graphic"
-    />
-    <p>&copy; 2025 The Rounder Circle</p>
-  </footer>
-
+  <main-footer></main-footer> 
   <!-- Email Signup Popup -->
   <div id="emailPopup" class="popup-overlay">
     <div class="popup-content" width="500" height="320">
@@ -160,26 +112,22 @@
   <!-- Popup Script -->
   <script>
     window.onload = function() {
-      // Show popup every time
-      setTimeout(() => {
-        document.getElementById("emailPopup").style.visibility = "visible";
-      }, 1000);
-
-      // Close popup when form is submitted
-      document.getElementById("substackForm").addEventListener("submit", function() {
-        closePopup();
-      });
+	const hasSeenPopup = sessionStorage.getItem('popupShown');
+	
+	if (!hasSeenPopup) {
+	  setTimeout(() => {
+	    const popup = document.getElementById("emailPopup");
+  	    if (popup) {
+	      popup.style.visibility = "visible";
+	      sessionStorage.setItem('popupShown', 'true');
+	    }
+	  }, 1000);
+	}
     };
 
     function closePopup() {
-      document.getElementById("emailPopup").style.visibility = "hidden";
-    }
-
-    function toggleMenu() {
-      document.querySelector('.menu-bar').classList.toggle('open');
-      document.querySelector('.menu-toggle').classList.toggle('open');
+	document.getElementById("emailPopup").style.visibility = "hidden";
     }
   </script>
-
 </body>
 </html>
