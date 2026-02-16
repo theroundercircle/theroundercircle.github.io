@@ -72,6 +72,8 @@ customElements.define('main-header', MainHeader);
 
 function toggleMenu() {
 	const menu = document.querySelector('.menu-bar');
-	menu.classList.toggle('active');
+	const button = document.querySelector('.menu-toggle');
+	menu.classList.toggle('open');
+	button.classList.toggle('open');
 }
 

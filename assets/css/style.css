@@ -128,7 +128,7 @@ img {
 .menu-toggle .bar {
   width: 28px;
   height: 4px;
-  background: white;
+  background: #f0eedc;
   margin: 4px 0;
   border-radius: 2px;
   transition: 0.3s;

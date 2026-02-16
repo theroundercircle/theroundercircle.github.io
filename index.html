@@ -112,21 +112,23 @@
   <!-- Popup Script -->
   <script>
     window.onload = function() {
-	const hasSeenPopup = sessionStorage.getItem('popupShown');
-	
-	if (!hasSeenPopup) {
-	  setTimeout(() => {
-	    const popup = document.getElementById("emailPopup");
-  	    if (popup) {
-	      popup.style.visibility = "visible";
-	      sessionStorage.setItem('popupShown', 'true');
-	    }
-	  }, 1000);
-	}
+      // Check if popup was shown in this session
+      const sessionKey = 'popupShownThisSession_' + new Date().toDateString();
+      const hasShownToday = localStorage.getItem(sessionKey);
+      
+      if (!hasShownToday) {
+        setTimeout(() => {
+          const popup = document.getElementById("emailPopup");
+          if (popup) {
+            popup.style.visibility = "visible";
+            localStorage.setItem(sessionKey, 'true'); // Mark as shown for today
+          }
+        }, 1000);
+      }
     };
 
     function closePopup() {
-	document.getElementById("emailPopup").style.visibility = "hidden";
+      document.getElementById("emailPopup").style.visibility = "hidden";
     }
   </script>
 </body>
