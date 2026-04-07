@@ -1,5 +1,37 @@
 [
     {
+      "date": "2026-08-17",
+      "time": "8:45pm – 10:15pm",
+      "venue": "Blondie's Bar",
+      "event": "",
+      "link": "",
+      "location": "540 Valencia St, San Francisco, CA"
+    },
+    {
+      "date": "2026-08-15",
+      "time": "11:30am – 1:30pm",
+      "venue": "Salesforce Park",
+      "event": "Bluegrass Breeze",
+      "link": "",
+      "location": "181 Fremont Street, San Francisco, CA 94105"
+    },
+    {
+      "date": "2026-06-24",
+      "time": "6pm – 7pm",
+      "venue": "Filoli",
+      "event": "Summer Nights - Info + Tickets!",
+      "link": "https://filoli.org/summer-nights/?utm_source=Klaviyo&utm_medium=campaign&utm_campaign=4.5.26%20Summer%20Member%20Launch&utm_id=01KN7G8B1N0EYYFXK1GB0PWA7M&_kx=o8Ib8L_fKmxthSQG6OYCw-i6UweMSE8V349i5nT8F2U.QWGSWQ",
+      "location": "86 Old Adobe Lane, Woodside, CA 94062"
+    },
+    {
+      "date": "2026-06-10",
+      "time": "6pm – 7pm",
+      "venue": "Filoli",
+      "event": "Summer Nights - Info + Tickets!",
+      "link": "https://filoli.org/summer-nights/?utm_source=Klaviyo&utm_medium=campaign&utm_campaign=4.5.26%20Summer%20Member%20Launch&utm_id=01KN7G8B1N0EYYFXK1GB0PWA7M&_kx=o8Ib8L_fKmxthSQG6OYCw-i6UweMSE8V349i5nT8F2U.QWGSWQ",
+      "location": "86 Old Adobe Lane, Woodside, CA 94062"
+    },
+    {
       "date": "2026-04-16",
       "time": "9pm – 10:15pm",
       "venue": "The Liberties",

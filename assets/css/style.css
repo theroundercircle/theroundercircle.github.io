@@ -1,7 +1,7 @@
 /*===================================
-  1. Google Fonts Import
+  1. Google Fonts Import - OPTION 3: CONTEMPORARY BLEND
 ===================================*/
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Raleway:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap');
 
 /*===================================
   2. Root Variables
@@ -21,8 +21,8 @@
   --space-lg: 32px;
   --space-xl: 64px;
 
-  --font-heading: 'Poppins', sans-serif;
-  --font-body:    'Merriweather', serif;
+  --font-heading: 'DM Serif Display', serif;
+  --font-body:    'Raleway', sans-serif;
 }
 
 /*===================================
@@ -75,33 +75,46 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--clr-primary);
+  background: linear-gradient(135deg, var(--clr-primary) 0%, rgba(56, 102, 65, 0.95) 100%);
   padding: var(--space-sm) var(--space-md);
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+  border-bottom: 2px solid var(--clr-accent);
 }
 .site-header .brand a {
   font-family: var(--font-heading);
   font-size: 2rem;
   color: white;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  transition: all 0.3s ease;
+}
+
+.site-header .brand a:hover {
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 .menu-bar ul {
   list-style: none;
   display: flex;
 }
 .menu-bar a {
-  font-family: var(--font-body);
-  font-size: 1rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
   color: white;
   padding: var(--space-xs) var(--space-sm);
-  border-radius: 4px;
-  transition: background 0.2s;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 .menu-bar a:hover,
 .menu-bar a.active {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.15);
+  border-bottom: 2px solid var(--clr-accent);
+  transform: translateY(-1px);
 }
 
 @media (min-width: 769px) {
@@ -228,21 +241,10 @@ img {
   font-size: 1.25rem;
   margin-bottom: var(--space-md);
 }
-.btn-primary {
-  background: #2563eb; /* blue-600 */
-  color: white;
-  padding: var(--space-sm) var(--space-lg);
-  border: none;
-  border-radius: 6px;
-  transition: background 0.2s, transform 0.2s;
-}
-.btn-primary:hover {
-  background: #1d4ed8; /* blue-700 */
-  transform: translateY(-2px);
-}
 
 /*===================================
   7. Content Sections (Intro & Cards)
+===================================*/
 ===================================*/
 .main-content .intro {
   display: flex;
@@ -334,6 +336,12 @@ textarea:focus {
   margin-bottom: var(--space-md);
 }
 .contact-form label {
+  font-weight: 700;
+}
+
+/* Contact page main heading */
+main.container > h1 {
+  font-family: 'Outfit', sans-serif;
   font-weight: 700;
 }
 
@@ -475,20 +483,36 @@ textarea:focus {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
-q
+
 .video-grid.large {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  gap: 2.5rem;
   padding: 2rem 0;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .video-grid.large iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
   border: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.video-grid.large iframe:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+@media (max-width: 768px) {
+  .video-grid.large {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem 0;
+  }
 }
 
 .container {
@@ -624,6 +648,232 @@ q
 .brand{
   display: flex;
   align-items: center;
+}
+
+/*===================================
+  15. Refined Modern Aesthetic
+===================================*/
+
+/* Section headings - clean and simple */
+section > h1,
+section > h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--clr-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+section > h1 {
+  font-size: 2.5rem;
+}
+
+section > h2 {
+  font-size: 2rem;
+}
+
+/* Simple divider */
+.ornate-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--clr-border), transparent);
+  margin: var(--space-xl) 0;
+}
+
+.ornate-divider-symbol {
+  display: none;
+}
+
+/* Decorative line elements */
+.decorative-line {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--clr-border), transparent);
+  margin: var(--space-lg) 0;
+}
+
+/* Refined cards - clean modern look */
+.card {
+  background: white;
+  border: 1px solid var(--clr-border);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-color: var(--clr-primary);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Clean modern buttons */
+.btn {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+}
+
+.btn-primary {
+  background: var(--clr-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--clr-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(56, 102, 65, 0.2);
+}
+
+.btn-accent {
+  color: var(--clr-accent);
+  border: 2px solid var(--clr-accent);
+  background: transparent;
+}
+
+.btn-accent:hover {
+  background: var(--clr-accent);
+  color: white;
+}
+
+/* Band member styling */
+.band-members .grid .member {
+  text-align: center;
+}
+
+.band-members .grid .member img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto var(--space-md);
+  transition: all 0.3s ease;
+}
+
+.band-members .grid .member:hover img {
+  box-shadow: 0 4px 12px rgba(56, 102, 65, 0.15);
+  transform: scale(1.02);
+}
+
+.band-members .grid .member h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-xs);
+  color: var(--clr-primary);
+  font-weight: 600;
+}
+
+.band-members .grid .member p {
+  margin: 0;
+  font-style: italic;
+  color: var(--clr-secondary);
+  font-size: 0.95rem;
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Show list */
+.show-list li {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.show-list li:last-child {
+  border-bottom: none;
+}
+
+/* Band story section */
+.band-story {
+  max-width: 800px;
+  margin: 0 auto var(--space-xl);
+}
+
+.band-story h1 {
+  color: var(--clr-primary);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.band-story p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--clr-text);
+}
+
+/* Contact form */
+input[type="text"],
+input[type="email"],
+textarea {
+  border: 1px solid var(--clr-border);
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--clr-primary);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(56, 102, 65, 0.1);
+}
+
+/* Gallery */
+.photo-grid,
+.video-grid {
+  gap: 1.5rem;
+}
+
+.photo-grid img {
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.photo-grid img:hover {
+  box-shadow: 0 6px 16px rgba(56, 102, 65, 0.12);
+  transform: scale(1.01);
+}
+
+/* Footer */
+.social-footer {
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--clr-border);
+}
+
+.social-footer a {
+  transition: all 0.3s ease;
+  font-size: 1.8rem;
+}
+
+.social-footer a:hover {
+  transform: translateY(-3px);
+  color: var(--clr-primary);
 }
 
 
