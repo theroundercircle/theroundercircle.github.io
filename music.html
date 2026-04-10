@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Music – The Rounder Circle</title>
+  <link rel="icon" href="assets/images/social-preview.jpg" type="image/jpg" />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Raleway:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <script src="assets/js/header.js" defer></script>
+  <script src="assets/js/footer.js" defer></script>
+
+  <style>
+    /* ── Page layout ───────────────────────────── */
+    .music-page {
+      padding: var(--space-xl) 0;
+    }
+
+    .music-page .intro-text {
+      max-width: 800px;
+      margin: 0 auto var(--space-xl);
+      text-align: center;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--clr-text);
+    }
+
+    /* ── Album block ───────────────────────────── */
+    .album-block {
+      margin-bottom: var(--space-xl);
+    }
+
+    .album-header {
+      display: flex;
+      align-items: flex-end;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .album-art-large {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+      flex-shrink: 0;
+    }
+
+    .album-meta h2 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      color: var(--clr-primary);
+      margin-bottom: 0.4rem;
+      text-align: left;
+    }
+
+    .album-meta .album-subtitle {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: #888;
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    .album-meta .album-desc {
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: var(--space-md);
+    }
+
+    /* ── Track list ────────────────────────────── */
+    .track-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid var(--clr-border);
+    }
+
+    .track-item {
+      display: grid;
+      grid-template-columns: 28px 52px 1fr auto auto;
+      align-items: center;
+      gap: var(--space-md);
+      padding: 0.75rem var(--space-sm);
+      border-bottom: 1px solid var(--clr-border);
+      transition: background 0.2s;
+    }
+
+    .track-item:hover {
+      background: rgba(56, 102, 65, 0.05);
+    }
+
+    .track-num {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: #aaa;
+      text-align: center;
+      font-weight: 600;
+      min-width: 24px;
+    }
+
+    .track-thumb {
+      width: 52px;
+      height: 52px;
+      object-fit: cover;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+      background: var(--clr-border);
+    }
+
+    .track-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .track-title {
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      color: var(--clr-text);
+    }
+
+    .track-label {
+      font-size: 0.8rem;
+      color: var(--clr-accent);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-top: 2px;
+    }
+
+    /* ── Custom audio player ───────────────────── */
+    .audio-player {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .play-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid var(--clr-primary);
+      background: transparent;
+      color: var(--clr-primary);
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+
+    .play-btn:hover {
+      background: var(--clr-primary);
+      color: white;
+      transform: scale(1.08);
+    }
+
+    .play-btn.playing {
+      background: var(--clr-primary);
+      color: white;
+    }
+
+    .progress-wrap {
+      width: 120px;
+      height: 4px;
+      background: var(--clr-border);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--clr-primary);
+      border-radius: 2px;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Listen link ───────────────────────────── */
+    .listen-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-family: var(--font-body);
+      font-weight: 600;
+      color: var(--clr-primary);
+      border: 1.5px solid var(--clr-primary);
+      padding: 5px 14px;
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .listen-link:hover {
+      background: var(--clr-primary);
+      color: white;
+    }
+
+    .listen-link i {
+      font-size: 0.9rem;
+    }
+
+    /* ── Divider ───────────────────────────────── */
+    .ornate-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--clr-border), transparent);
+      margin: var(--space-xl) 0;
+    }
+
+    /* ── Responsive ────────────────────────────── */
+    @media (max-width: 640px) {
+      .album-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .album-art-large {
+        width: 160px;
+        height: 160px;
+      }
+      .track-item {
+        grid-template-columns: 22px 44px 1fr auto;
+        gap: 10px;
+      }
+      .progress-wrap {
+        display: none;
+      }
+      .listen-link span {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main-header></main-header>
+
+  <main class="container music-page">
+
+    <section>
+      <h1>Our Music</h1>
+      <p class="intro-text">
+        Head to your favorite streaming service and save our music to your playlists!
+	New singles drop every three weeks — the full album <em>California Bound</em> arrives this June! <br><br>
+	
+	Don't want to wait to litsten to our full album? You can purchase a CD or digital download today. Just click
+	the "Merch" tab above.
+      </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         ALBUM: California Bound
+    ══════════════════════════════════════════ -->
+    <div class="album-block">
+
+      <div class="album-header">
+        <!-- Replace src with the real album art path -->
+        <img
+          src="assets/images/PNG_CABound.png"
+          alt="California Bound album art"
+          class="album-art-large"
+          onerror="this.style.background='#D3C2B0';this.style.display='block';this.removeAttribute('src')"
+        />
+        <div class="album-meta">
+          <h2>California Bound</h2>
+          <p class="album-subtitle">Album · 2026 · The Rounder Circle</p> 
+
+	  <p class="album-desc">
+	  <em>California Bound</em> is a collection of diverse yet cohesive original songs (plus one cover!), 
+	  ranging from odes to California to songs about small-town gossip. Follow along as the album is released!
+	  </p>
+	  <p style="font-size: 12px;">
+	  Recorded and mixed by <a href="https://www.daniellegoldsmithaudio.com/" target="_blank">
+		  		<strong><u>Danielle Goldsmith</u></strong></a> <br>
+	  Mastered by <a href="https://www.amarlal.info/" target="_blank">
+		      <strong><u>Amar Lal</u></strong></a> <br>
+	  Album artwork by <a href="https://linktr.ee/ambrajacobson" target="_blank">
+		           <strong><u>Ambra Jacobson</u></strong></a>
+          </p>
+          <!-- Uncomment when released -->
+          <!-- <a
+            class="listen-link"
+            href="https://ffm.to/REPLACE_WITH_ALBUM_LINK"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fa-solid fa-music"></i>
+            <span>Listen Everywhere</span>
+	  </a> -->
+        </div>
+      </div>
+
+      <!-- ── Track list ── -->
+      <!-- 
+        HOW TO ADD A TRACK:
+          1. Copy one <li class="track-item"> block.
+          2. Update the track number, title, and (optionally) the badge text.
+          3. Set data-src on the play button to the path of your audio preview file
+             e.g. data-src="assets/audio/my-song-preview.mp3"
+          4. Replace the href on the Spotify link with the real track URL.
+      -->
+      <ul class="track-list" id="trackList">
+
+        <li class="track-item">
+          <span class="track-num">1</span>
+          <img
+            src="assets/images/JPGNoBandNameCAbound.jpg"
+            alt="California Bound single art"
+            class="track-thumb"
+          />
+          <div class="track-info">
+            <span class="track-title">California Bound</span>
+            <span class="track-label">Single · Out Now</span>
+          </div>
+          <div class="audio-player">
+            <button
+              class="play-btn"
+              data-src="assets/audio/TRC_CaliforniaBound_preview.mp3"
+              aria-label="Play preview"
+            ><i class="fa-solid fa-play"></i></button>
+            <div class="progress-wrap">
+              <div class="progress-bar"></div>
+            </div>
+          </div>
+          <a
+            class="listen-link"
+            href="https://ffm.to/californiabound"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fa-solid fa-headphones"></i>
+            <span>Listen</span>
+          </a>
+        </li>
+
+        <li class="track-item">
+          <span class="track-num">2</span>
+          <img
+            src="assets/images/PNGTheseDays.png"
+            alt="These Days cover art"
+            class="track-thumb"
+          />
+          <div class="track-info">
+            <span class="track-title">These Days</span>
+            <span class="track-label">Single · Out Now</span>
+          </div>
+          <div class="audio-player">
+            <button
+              class="play-btn"
+              data-src="assets/audio/TRC_TheseDays_preview.mp3"
+              aria-label="Play preview"
+            ><i class="fa-solid fa-play"></i></button>
+            <div class="progress-wrap">
+              <div class="progress-bar"></div>
+            </div>
+          </div>
+          <a
+            class="listen-link"
+            href="https://ffm.to/trc-thesedays"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fa-solid fa-headphones"></i>
+            <span>Listen</span>
+          </a>
+        </li>
+
+         <li class="track-item">
+          <span class="track-num">3</span>
+          <img
+            src="assets/images/VeloPNG.png"
+            alt="Velo cover art"
+            class="track-thumb"
+          />
+          <div class="track-info">
+            <span class="track-title">The Man They Call Velo</span>
+            <span class="track-label">Single · Out Now</span>
+          </div>
+          <div class="audio-player">
+            <button
+              class="play-btn"
+              data-src="assets/audio/TRC_TMTCVelo_preview.mp3"
+              aria-label="Play preview"
+            ><i class="fa-solid fa-play"></i></button>
+            <div class="progress-wrap">
+              <div class="progress-bar"></div>
+            </div>
+          </div>
+          <a
+            class="listen-link"
+            href="https://ffm.to/velo"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fa-solid fa-headphones"></i>
+            <span>Listen</span>
+          </a>
+        </li>
+
+	 <li class="track-item">
+          <span class="track-num">4</span>
+          <img
+            src="assets/images/WhenIGetWingsPNG.png"
+            alt="Wings cover art"
+            class="track-thumb"
+          />
+          <div class="track-info">
+            <span class="track-title">When I Get Wings</span>
+            <span class="track-label">Single · Out Now</span>
+          </div>
+          <div class="audio-player">
+            <button
+              class="play-btn"
+              data-src="assets/audio/TRC_WhenIGetWings_preview.mp3"
+              aria-label="Play preview"
+            ><i class="fa-solid fa-play"></i></button>
+            <div class="progress-wrap">
+              <div class="progress-bar"></div>
+            </div>
+          </div>
+          <a
+            class="listen-link"
+            href="https://ffm.to/when-i-get-wings"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fa-solid fa-headphones"></i>
+            <span>Listen</span>
+          </a>
+        </li>
+
+        <li class="track-item" style="opacity: 0.55;">
+          <span class="track-num">5</span>
+          <div class="track-thumb" style="background: var(--clr-border); border-radius: 5px;"></div>
+          <div class="track-info">
+            <span class="track-title">Clean Slate</span>
+            <span class="track-label countdown-label" data-release="2026-04-24" style="color:#aaa;"></span>
+          </div>
+          <div class="audio-player">
+            <button class="play-btn" disabled style="border-color:#ccc;color:#ccc;cursor:default;">
+              <i class="fa-solid fa-lock"></i>
+            </button>
+            <div class="progress-wrap"><div class="progress-bar"></div></div>
+          </div>
+          <span class="listen-link" style="border-color:#ccc;color:#ccc;cursor:default;">
+            <i class="fa-solid fa-headphones"></i>
+            <span>Listen</span>
+          </span>
+        </li>
+
+	 <li class="track-item" style="opacity: 0.55;">
+          <span class="track-num">6</span>
+          <div class="track-thumb" style="background: var(--clr-border); border-radius: 5px;"></div>
+          <div class="track-info">
+            <span class="track-title">Seasons</span>
+            <span class="track-label countdown-label" data-release="2026-05-15" style="color:#aaa;"></span>
+          </div>
+          <div class="audio-player">
+            <button class="play-btn" disabled style="border-color:#ccc;color:#ccc;cursor:default;">
+              <i class="fa-solid fa-lock"></i>
+            </button>
+            <div class="progress-wrap"><div class="progress-bar"></div></div>
+          </div>
+          <span class="listen-link" style="border-color:#ccc;color:#ccc;cursor:default;">
+            <i class="fa-solid fa-headphones"></i>
+            <span>Listen</span>
+          </span>
+        </li>
+
+      </ul><!-- /track-list -->
+    </div><!-- /album-block -->
+
+  </main>
+
+  <main-footer></main-footer>
+
+  <!-- ── Audio engine ──────────────────────────── -->
+  <script>
+    (function () {
+      let currentAudio = null;
+      let currentBtn   = null;
+
+      function stopCurrent() {
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0;
+        }
+        if (currentBtn) {
+          currentBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+          currentBtn.classList.remove('playing');
+          const wrap = currentBtn.closest('.audio-player').querySelector('.progress-bar');
+          if (wrap) wrap.style.width = '0%';
+        }
+        currentAudio = null;
+        currentBtn   = null;
+      }
+
+      document.querySelectorAll('.play-btn[data-src]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const src = btn.dataset.src;
+
+          // Clicking the currently-playing track → pause it
+          if (currentBtn === btn) {
+            stopCurrent();
+            return;
+          }
+
+          // Stop whatever was playing before
+          stopCurrent();
+
+          const audio = new Audio(src);
+          const progressBar = btn.closest('.audio-player').querySelector('.progress-bar');
+
+          audio.addEventListener('timeupdate', function () {
+            if (!audio.duration) return;
+            progressBar.style.width = (audio.currentTime / audio.duration * 100) + '%';
+          });
+
+          audio.addEventListener('ended', function () {
+            stopCurrent();
+          });
+
+          audio.play().catch(function () {
+            // Browser autoplay blocked — show a friendly message
+            btn.title = 'Autoplay blocked. Click again or check browser settings.';
+          });
+
+          btn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+          btn.classList.add('playing');
+          currentAudio = audio;
+          currentBtn   = btn;
+        });
+
+        // Click on progress bar to seek
+        const wrap = btn.closest('.audio-player').querySelector('.progress-wrap');
+        if (wrap) {
+          wrap.addEventListener('click', function (e) {
+            if (!currentAudio || currentBtn !== btn) return;
+            const ratio = e.offsetX / wrap.offsetWidth;
+            currentAudio.currentTime = ratio * currentAudio.duration;
+          });
+        }
+      });
+    })();
+  </script>
+  <!-- ── Countdown engine ──────────────────────── -->
+  <script>
+    (function () {
+      function updateCountdowns() {
+        document.querySelectorAll('.countdown-label[data-release]').forEach(function (el) {
+          const release = new Date(el.dataset.release + 'T00:00:00');
+          const now     = new Date();
+          // Zero out time so we count whole days remaining
+          now.setHours(0, 0, 0, 0);
+          const diff = Math.ceil((release - now) / (1000 * 60 * 60 * 24));
+          if (diff > 1) {
+            el.textContent = 'Out in ' + diff + ' days';
+          } else if (diff === 1) {
+            el.textContent = 'Out tomorrow!';
+          } else if (diff === 0) {
+            el.textContent = 'Out today!';
+          } else {
+            el.textContent = 'Out Now';
+            el.style.color = 'var(--clr-accent)';
+          }
+        });
+      }
+      updateCountdowns();
+      // Refresh every hour in case the page stays open overnight
+      setInterval(updateCountdowns, 1000 * 60 * 60);
+    })();
+  </script>
+</body>
+</html>

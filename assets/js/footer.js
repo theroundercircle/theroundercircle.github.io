@@ -36,7 +36,7 @@ class MainFooter extends HTMLElement {
 		      alt="Illustration of California poppies"
 		      class="footer-graphic"
 		    />
-		    <p>&copy; 2025 The Rounder Circle</p>
+		    <p>&copy; 2026 The Rounder Circle</p>
 		</footer>`;	
 	}
 }
