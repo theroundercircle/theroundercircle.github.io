@@ -8,7 +8,7 @@ class MainHeader extends HTMLElement {
 		if (!hasSeenBanner) {
 			bannerHTML = `
 			<div class="header-banner">
-			    <p> New Music Out Now! <a href="music.html" target=_blank rel="noopener noreferrer">Listen here!
+			    <p> New Music Out Now! <a href="music.html">Listen here!
 			  </div>
 			`;
 		}
