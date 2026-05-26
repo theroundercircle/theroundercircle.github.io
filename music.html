@@ -229,6 +229,70 @@
       margin: var(--space-xl) 0;
     }
 
+    /* ── Singles Accordion ─────────────────────── */
+    .singles-accordion {
+      margin-top: var(--space-lg);
+      border: 1px solid var(--clr-border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .singles-accordion-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 1rem var(--space-md);
+      background: rgba(56, 102, 65, 0.04);
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--clr-text);
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .singles-accordion-trigger:hover {
+      background: rgba(56, 102, 65, 0.09);
+    }
+
+    .singles-accordion-trigger-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .singles-accordion-trigger-left i {
+      color: var(--clr-primary);
+      font-size: 0.9rem;
+    }
+
+    .singles-accordion-chevron {
+      color: var(--clr-primary);
+      font-size: 0.85rem;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .singles-accordion.open .singles-accordion-chevron {
+      transform: rotate(180deg);
+    }
+
+    .singles-accordion-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.32s ease;
+    }
+
+    .singles-accordion.open .singles-accordion-body {
+      grid-template-rows: 1fr;
+    }
+
+    .singles-accordion-inner {
+      overflow: hidden;
+    }
+
     /* ── Responsive ────────────────────────────── */
     @media (max-width: 640px) {
       .album-header {
@@ -267,10 +331,9 @@
       <h1>Our Music</h1>
       <p class="intro-text">
         Head to your favorite streaming service and save our music to your playlists!
-	New singles drop every three weeks — the full album <em>California Bound</em> arrives this June! <br><br>
-	
-	Don't want to wait to litsten to our full album? You can purchase a CD or digital download today. Just click
-	the "Merch" tab above.
+        The full album <em>California Bound</em> is out now! Want to own a copy? Head to our 
+	<a href="https://the-rounder-circle-shop.fourthwall.com/" target="_blank">
+	<strong><u>our store</u></strong></a> <br> to purchase a CD or download a digital copy!
       </p>
     </section>
 
@@ -303,8 +366,7 @@
 	  Album artwork by <a href="https://linktr.ee/ambrajacobson" target="_blank">
 		           <strong><u>Ambra Jacobson</u></strong></a>
           </p>
-          <!-- Uncomment when released -->
-          <!-- <a
+          <a
             class="listen-link"
             href="https://ffm.to/REPLACE_WITH_ALBUM_LINK"
             target="_blank"
@@ -312,239 +374,147 @@
           >
             <i class="fa-solid fa-music"></i>
             <span>Listen Everywhere</span>
-	  </a> -->
+	  </a>
         </div>
       </div>
 
-      <!-- ── Track list ── -->
-      <!-- 
-        HOW TO ADD A TRACK:
-          1. Copy one <li class="track-item"> block.
-          2. Update the track number, title, and (optionally) the badge text.
-          3. Set data-src on the play button to the path of your audio preview file
-             e.g. data-src="assets/audio/my-song-preview.mp3"
-          4. Replace the href on the Spotify link with the real track URL.
-      -->
-      <ul class="track-list" id="trackList">
-
-        <li class="track-item">
-          <span class="track-num">1</span>
-          <img
-            src="assets/images/JPGNoBandNameCAbound.jpg"
-            alt="California Bound single art"
-            class="track-thumb"
-          />
-          <div class="track-info">
-            <span class="track-title">California Bound</span>
-            <span class="track-label">Single · Out Now</span>
-          </div>
-          <div class="audio-player">
-            <button
-              class="play-btn"
-              data-src="assets/audio/TRC_CaliforniaBound_preview.mp3"
-              aria-label="Play preview"
-            ><i class="fa-solid fa-play"></i></button>
-            <div class="progress-wrap">
-              <div class="progress-bar"></div>
-            </div>
-          </div>
-          <a
-            class="listen-link"
-            href="https://ffm.to/californiabound"
-            target="_blank"
-            rel="noopener"
-          >
-            <i class="fa-solid fa-headphones"></i>
-            <span>Listen</span>
-          </a>
-        </li>
-
-        <li class="track-item">
-          <span class="track-num">2</span>
-          <img
-            src="assets/images/PNGTheseDays.png"
-            alt="These Days cover art"
-            class="track-thumb"
-          />
-          <div class="track-info">
-            <span class="track-title">These Days</span>
-            <span class="track-label">Single · Out Now</span>
-          </div>
-          <div class="audio-player">
-            <button
-              class="play-btn"
-              data-src="assets/audio/TRC_TheseDays_preview.mp3"
-              aria-label="Play preview"
-            ><i class="fa-solid fa-play"></i></button>
-            <div class="progress-wrap">
-              <div class="progress-bar"></div>
-            </div>
-          </div>
-          <a
-            class="listen-link"
-            href="https://ffm.to/trc-thesedays"
-            target="_blank"
-            rel="noopener"
-          >
-            <i class="fa-solid fa-headphones"></i>
-            <span>Listen</span>
-          </a>
-        </li>
-
-         <li class="track-item">
-          <span class="track-num">3</span>
-          <img
-            src="assets/images/VeloPNG.png"
-            alt="Velo cover art"
-            class="track-thumb"
-          />
-          <div class="track-info">
-            <span class="track-title">The Man They Call Velo</span>
-            <span class="track-label">Single · Out Now</span>
-          </div>
-          <div class="audio-player">
-            <button
-              class="play-btn"
-              data-src="assets/audio/TRC_TMTCVelo_preview.mp3"
-              aria-label="Play preview"
-            ><i class="fa-solid fa-play"></i></button>
-            <div class="progress-wrap">
-              <div class="progress-bar"></div>
-            </div>
-          </div>
-          <a
-            class="listen-link"
-            href="https://ffm.to/velo"
-            target="_blank"
-            rel="noopener"
-          >
-            <i class="fa-solid fa-headphones"></i>
-            <span>Listen</span>
-          </a>
-        </li>
-
-	 <li class="track-item">
-          <span class="track-num">4</span>
-          <img
-            src="assets/images/WhenIGetWingsPNG.png"
-            alt="Wings cover art"
-            class="track-thumb"
-          />
-          <div class="track-info">
-            <span class="track-title">When I Get Wings</span>
-            <span class="track-label">Single · Out Now</span>
-          </div>
-          <div class="audio-player">
-            <button
-              class="play-btn"
-              data-src="assets/audio/TRC_WhenIGetWings_preview.mp3"
-              aria-label="Play preview"
-            ><i class="fa-solid fa-play"></i></button>
-            <div class="progress-wrap">
-              <div class="progress-bar"></div>
-            </div>
-          </div>
-          <a
-            class="listen-link"
-            href="https://ffm.to/when-i-get-wings"
-            target="_blank"
-            rel="noopener"
-          >
-            <i class="fa-solid fa-headphones"></i>
-            <span>Listen</span>
-          </a>
-        </li>
-
-	<li class="track-item">
-          <span class="track-num">5</span>
-          <img
-            src="assets/images/CleanSlate2PNG.png"
-            alt="Clean slate cover art"
-            class="track-thumb"
-          />
-          <div class="track-info">
-            <span class="track-title">Clean Slate</span>
-            <span class="track-label">Single · Out Now</span>
-          </div>
-          <div class="audio-player">
-            <button
-              class="play-btn"
-              data-src="assets/audio/TRC_CleanSlate_preview.mp3"
-              aria-label="Play preview"
-            ><i class="fa-solid fa-play"></i></button>
-            <div class="progress-wrap">
-              <div class="progress-bar"></div>
-            </div>
-          </div>
-          <a
-            class="listen-link"
-            href="https://ffm.to/clean-slate"
-            target="_blank"
-            rel="noopener"
-          >
-            <i class="fa-solid fa-headphones"></i>
-            <span>Listen</span>
-          </a>
-        </li>
-
- 	<li class="track-item">
-          <span class="track-num">6</span>
-          <img
-            src="assets/images/seasonsPNG.png"
-            alt="Seasons cover art"
-            class="track-thumb"
-          />
-          <div class="track-info">
-            <span class="track-title">Seasons</span>
-            <span class="track-label">Single · Out Now</span>
-          </div>
-          <div class="audio-player">
-            <button
-              class="play-btn"
-              data-src="assets/audio/TRC_Seasons_preview.mp3"
-              aria-label="Play preview"
-            ><i class="fa-solid fa-play"></i></button>
-            <div class="progress-wrap">
-              <div class="progress-bar"></div>
-            </div>
-          </div>
-          <a
-            class="listen-link"
-            href="https://ffm.to/seasons-trc"
-            target="_blank"
-            rel="noopener"
-          >
-            <i class="fa-solid fa-headphones"></i>
-            <span>Listen</span>
-          </a>
-        </li>
-      
-	<!--
-	 <li class="track-item" style="opacity: 0.55;">
-          <span class="track-num">6</span>
-          <div class="track-thumb" style="background: var(--clr-border); border-radius: 5px;"></div>
-          <div class="track-info">
-            <span class="track-title">Seasons</span>
-            <span class="track-label countdown-label" data-release="2026-05-15" style="color:#aaa;"></span>
-          </div>
-          <div class="audio-player">
-            <button class="play-btn" disabled style="border-color:#ccc;color:#ccc;cursor:default;">
-              <i class="fa-solid fa-lock"></i>
-            </button>
-            <div class="progress-wrap"><div class="progress-bar"></div></div>
-          </div>
-          <span class="listen-link" style="border-color:#ccc;color:#ccc;cursor:default;">
-            <i class="fa-solid fa-headphones"></i>
-            <span>Listen</span>
+      <!-- ── Released Singles Accordion ── -->
+      <div class="singles-accordion" id="singlesAccordion">
+        <button
+          class="singles-accordion-trigger"
+          id="singlesToggle"
+          aria-expanded="false"
+          aria-controls="singlesBody"
+        >
+          <span class="singles-accordion-trigger-left">
+            <i class="fa-solid fa-music"></i>
+            Released Singles
           </span>
-	 </li> -->
+          <i class="fa-solid fa-chevron-down singles-accordion-chevron"></i>
+        </button>
 
-      </ul><!-- /track-list -->
+        <div class="singles-accordion-body" id="singlesBody" role="region">
+          <div class="singles-accordion-inner">
+            <ul class="track-list">
+
+              <li class="track-item">
+                <span class="track-num">1</span>
+                <img src="assets/images/JPGNoBandNameCAbound.jpg" alt="California Bound single art" class="track-thumb" />
+                <div class="track-info">
+                  <span class="track-title">California Bound</span>
+                  <span class="track-label">Single · Out Now</span>
+                </div>
+                <div class="audio-player">
+                  <button class="play-btn" data-src="assets/audio/TRC_CaliforniaBound_preview.mp3" aria-label="Play preview"><i class="fa-solid fa-play"></i></button>
+                  <div class="progress-wrap"><div class="progress-bar"></div></div>
+                </div>
+                <a class="listen-link" href="https://ffm.to/californiabound" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-headphones"></i><span>Listen</span>
+                </a>
+              </li>
+
+              <li class="track-item">
+                <span class="track-num">2</span>
+                <img src="assets/images/PNGTheseDays.png" alt="These Days cover art" class="track-thumb" />
+                <div class="track-info">
+                  <span class="track-title">These Days</span>
+                  <span class="track-label">Single · Out Now</span>
+                </div>
+                <div class="audio-player">
+                  <button class="play-btn" data-src="assets/audio/TRC_TheseDays_preview.mp3" aria-label="Play preview"><i class="fa-solid fa-play"></i></button>
+                  <div class="progress-wrap"><div class="progress-bar"></div></div>
+                </div>
+                <a class="listen-link" href="https://ffm.to/trc-thesedays" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-headphones"></i><span>Listen</span>
+                </a>
+              </li>
+
+              <li class="track-item">
+                <span class="track-num">3</span>
+                <img src="assets/images/VeloPNG.png" alt="Velo cover art" class="track-thumb" />
+                <div class="track-info">
+                  <span class="track-title">The Man They Call Velo</span>
+                  <span class="track-label">Single · Out Now</span>
+                </div>
+                <div class="audio-player">
+                  <button class="play-btn" data-src="assets/audio/TRC_TMTCVelo_preview.mp3" aria-label="Play preview"><i class="fa-solid fa-play"></i></button>
+                  <div class="progress-wrap"><div class="progress-bar"></div></div>
+                </div>
+                <a class="listen-link" href="https://ffm.to/velo" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-headphones"></i><span>Listen</span>
+                </a>
+              </li>
+
+              <li class="track-item">
+                <span class="track-num">4</span>
+                <img src="assets/images/WhenIGetWingsPNG.png" alt="Wings cover art" class="track-thumb" />
+                <div class="track-info">
+                  <span class="track-title">When I Get Wings</span>
+                  <span class="track-label">Single · Out Now</span>
+                </div>
+                <div class="audio-player">
+                  <button class="play-btn" data-src="assets/audio/TRC_WhenIGetWings_preview.mp3" aria-label="Play preview"><i class="fa-solid fa-play"></i></button>
+                  <div class="progress-wrap"><div class="progress-bar"></div></div>
+                </div>
+                <a class="listen-link" href="https://ffm.to/when-i-get-wings" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-headphones"></i><span>Listen</span>
+                </a>
+              </li>
+
+              <li class="track-item">
+                <span class="track-num">5</span>
+                <img src="assets/images/CleanSlate2PNG.png" alt="Clean Slate cover art" class="track-thumb" />
+                <div class="track-info">
+                  <span class="track-title">Clean Slate</span>
+                  <span class="track-label">Single · Out Now</span>
+                </div>
+                <div class="audio-player">
+                  <button class="play-btn" data-src="assets/audio/TRC_CleanSlate_preview.mp3" aria-label="Play preview"><i class="fa-solid fa-play"></i></button>
+                  <div class="progress-wrap"><div class="progress-bar"></div></div>
+                </div>
+                <a class="listen-link" href="https://ffm.to/clean-slate" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-headphones"></i><span>Listen</span>
+                </a>
+              </li>
+
+              <li class="track-item">
+                <span class="track-num">6</span>
+                <img src="assets/images/seasonsPNG.png" alt="Seasons cover art" class="track-thumb" />
+                <div class="track-info">
+                  <span class="track-title">Seasons</span>
+                  <span class="track-label">Single · Out Now</span>
+                </div>
+                <div class="audio-player">
+                  <button class="play-btn" data-src="assets/audio/TRC_Seasons_preview.mp3" aria-label="Play preview"><i class="fa-solid fa-play"></i></button>
+                  <div class="progress-wrap"><div class="progress-bar"></div></div>
+                </div>
+                <a class="listen-link" href="https://ffm.to/seasons-trc" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-headphones"></i><span>Listen</span>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div><!-- /singles-accordion -->
     </div><!-- /album-block -->
 
   </main>
 
   <main-footer></main-footer>
+
+  <!-- ── Accordion toggle ─────────────────────── -->
+  <script>
+    (function () {
+      const accordion = document.getElementById('singlesAccordion');
+      const trigger   = document.getElementById('singlesToggle');
+
+      trigger.addEventListener('click', function () {
+        const isOpen = accordion.classList.toggle('open');
+        trigger.setAttribute('aria-expanded', isOpen);
+      });
+    })();
+  </script>
 
   <!-- ── Audio engine ──────────────────────────── -->
   <script>
@@ -553,15 +523,12 @@
       let currentBtn   = null;
 
       function stopCurrent() {
-        if (currentAudio) {
-          currentAudio.pause();
-          currentAudio.currentTime = 0;
-        }
+        if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
         if (currentBtn) {
           currentBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
           currentBtn.classList.remove('playing');
-          const wrap = currentBtn.closest('.audio-player').querySelector('.progress-bar');
-          if (wrap) wrap.style.width = '0%';
+          const bar = currentBtn.closest('.audio-player').querySelector('.progress-bar');
+          if (bar) bar.style.width = '0%';
         }
         currentAudio = null;
         currentBtn   = null;
@@ -569,31 +536,20 @@
 
       document.querySelectorAll('.play-btn[data-src]').forEach(function (btn) {
         btn.addEventListener('click', function () {
-          const src = btn.dataset.src;
-
-          // Clicking the currently-playing track → pause it
-          if (currentBtn === btn) {
-            stopCurrent();
-            return;
-          }
-
-          // Stop whatever was playing before
+          if (currentBtn === btn) { stopCurrent(); return; }
           stopCurrent();
 
-          const audio = new Audio(src);
+          const audio       = new Audio(btn.dataset.src);
           const progressBar = btn.closest('.audio-player').querySelector('.progress-bar');
+          const wrap        = btn.closest('.audio-player').querySelector('.progress-wrap');
 
           audio.addEventListener('timeupdate', function () {
             if (!audio.duration) return;
             progressBar.style.width = (audio.currentTime / audio.duration * 100) + '%';
           });
-
-          audio.addEventListener('ended', function () {
-            stopCurrent();
-          });
+          audio.addEventListener('ended', stopCurrent);
 
           audio.play().catch(function () {
-            // Browser autoplay blocked — show a friendly message
             btn.title = 'Autoplay blocked. Click again or check browser settings.';
           });
 
@@ -601,45 +557,15 @@
           btn.classList.add('playing');
           currentAudio = audio;
           currentBtn   = btn;
-        });
 
-        // Click on progress bar to seek
-        const wrap = btn.closest('.audio-player').querySelector('.progress-wrap');
-        if (wrap) {
-          wrap.addEventListener('click', function (e) {
-            if (!currentAudio || currentBtn !== btn) return;
-            const ratio = e.offsetX / wrap.offsetWidth;
-            currentAudio.currentTime = ratio * currentAudio.duration;
-          });
-        }
-      });
-    })();
-  </script>
-  <!-- ── Countdown engine ──────────────────────── -->
-  <script>
-    (function () {
-      function updateCountdowns() {
-        document.querySelectorAll('.countdown-label[data-release]').forEach(function (el) {
-          const release = new Date(el.dataset.release + 'T00:00:00');
-          const now     = new Date();
-          // Zero out time so we count whole days remaining
-          now.setHours(0, 0, 0, 0);
-          const diff = Math.ceil((release - now) / (1000 * 60 * 60 * 24));
-          if (diff > 1) {
-            el.textContent = 'Out in ' + diff + ' days';
-          } else if (diff === 1) {
-            el.textContent = 'Out tomorrow!';
-          } else if (diff === 0) {
-            el.textContent = 'Out today!';
-          } else {
-            el.textContent = 'Out Now';
-            el.style.color = 'var(--clr-accent)';
+          if (wrap) {
+            wrap.addEventListener('click', function (e) {
+              if (!currentAudio || currentBtn !== btn) return;
+              currentAudio.currentTime = (e.offsetX / wrap.offsetWidth) * currentAudio.duration;
+            });
           }
         });
-      }
-      updateCountdowns();
-      // Refresh every hour in case the page stays open overnight
-      setInterval(updateCountdowns, 1000 * 60 * 60);
+      });
     })();
   </script>
 </body>
