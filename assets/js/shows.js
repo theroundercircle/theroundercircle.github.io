@@ -82,6 +82,7 @@ function parseLocalDate(dateStr) {
             </div>
             <span class="show-venue">${venue}</span>
             <span class="show-location">${shows[0].location}</span>
+            <span class="show-location">${shows[0].details}</span>
           </li>
         `;
       }).join('');
@@ -100,6 +101,7 @@ function parseLocalDate(dateStr) {
                 <span class="show-event">
                   ${show.link ? `<a href="${show.link}" target="_blank" rel="noopener noreferrer">${show.event}</a>` : show.event}
                 </span>` : ''}
+              ${show.details ? `<span class="show-location"> ${show.details}</span>` : ''}
               <span class="show-location">${show.location}</span>
             </li>
           `;

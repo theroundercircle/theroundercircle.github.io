@@ -31,11 +31,12 @@
     },
     {
       "date": "2026-08-21",
-      "time": "6:30PM",
+      "time": "6:30PM, Doors 6PM",
       "venue": "House Concert",
-      "event": "Contact us for details!",
-      "link": "",
-      "location": "San Carlos, CA"
+      "event": "Tickets via PayPal ($35)",
+      "details": "Please provide <b>your email address</b> and <b>The Rounder Circle</b>. Use paying friend or family to avoid fees, do NOT select “Goods and Services”." ,
+      "link": "https://paypal.me/foghouse415",
+      "location": "San Mateo, CA (address will be provided to attendees two days prior)"
     },
     {
       "date": "2026-08-23",
