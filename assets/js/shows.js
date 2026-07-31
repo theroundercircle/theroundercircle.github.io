@@ -82,7 +82,6 @@ function parseLocalDate(dateStr) {
             </div>
             <span class="show-venue">${venue}</span>
             <span class="show-location">${shows[0].location}</span>
-            <span class="show-location">${shows[0].details}</span>
           </li>
         `;
       }).join('');
