@@ -1,5 +1,43 @@
 [
     {
+      "date": "2027-03-25",
+      "time": "9pm – 10:15pm",
+      "venue": "The Liberties",
+      "event": "",
+      "link": "",
+      "location": "998 Guerrero St, San Francisco, CA 94110"
+    },
+    {
+      "date": "2027-01-21",
+      "time": "9pm – 10:15pm",
+      "venue": "The Liberties",
+      "event": "",
+      "link": "",
+      "location": "998 Guerrero St, San Francisco, CA 94110"
+    },
+    {
+      "date": "2027-03-15",
+      "time": "8:45pm – 10:15pm",
+      "venue": "Blondie's Bar",
+      "event": "",
+      "link": "",
+      "location": "540 Valencia St, San Francisco, CA"
+    },
+    {
+      "date": "2026-12-07",
+      "time": "8:45pm – 10:15pm",
+      "venue": "Blondie's Bar",
+      "event": "",
+      "link": "",
+      "location": "540 Valencia St, San Francisco, CA"
+    },
+    {
+      "date": "2026-10-11",
+      "time": "7:30pm – 10pm",
+      "venue": "The Riptide",
+      "location": "3639 Taraval St, San Francisco, CA"    
+    },
+    {
       "date": "2026-06-05",
       "time": "8pm – 10pm",
       "venue": "Alhambra Irish House",
