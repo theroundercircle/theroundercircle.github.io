@@ -41,7 +41,15 @@ class MainHeader extends HTMLElement {
 			    Merch
 			  </a>
 			</li>
-			<li><a href="videos.html">Videos</a></li>
+			<li>
+			  <a
+			    href="https://www.youtube.com/@TheRounderCircle"
+			    target="_blank"
+			    rel="noopener noreferrer"
+			  >
+			    Videos
+			  </a>
+			</li>
 			<li><a href="epk.html">EPK</a></li>
 		      </ul>
 		    </nav>

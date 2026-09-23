@@ -18,7 +18,7 @@ Then visit `http://localhost:8000/index.html` etc.
 
 ## Architecture
 
-**Pages** are independent top-level HTML files (`index.html`, `about.html`, `music.html`, `shows.html`, `videos.html`, `contact.html`, `epk.html`, `merch/index.html`). Each page repeats its own `<head>` boilerplate (Google Fonts, Font Awesome CDN, `assets/css/style.css`) — there is no templating engine, so shared markup changes must be hand-edited across every page that needs them.
+**Pages** are independent top-level HTML files (`index.html`, `about.html`, `music.html`, `shows.html`, `contact.html`, `epk.html`, `merch/index.html`). Each page repeats its own `<head>` boilerplate (Google Fonts, Font Awesome CDN, `assets/css/style.css`) — there is no templating engine, so shared markup changes must be hand-edited across every page that needs them.
 
 **Header/footer are Web Components, not includes.** `assets/js/header.js` and `assets/js/footer.js` define `<main-header>` and `<main-footer>` custom elements that inject their markup via `connectedCallback`. Every page loads both scripts with `defer` in `<head>` and places `<main-header></main-header>` / `<main-footer></main-footer>` in the body. To change nav links, the promo banner, or footer social links site-wide, edit these two files — not the individual pages.
 - `header.js` also sets the `.active` nav class by comparing `location.pathname` against each link's `href`, and shows a one-time-per-session promo banner (via `sessionStorage`) that auto-hides after 60s.
@@ -31,6 +31,8 @@ Then visit `http://localhost:8000/index.html` etc.
 **Assets**: `assets/images/` holds all photography/artwork (an `archive/` and `gallery/` subfolder exist for older/extra images — check there before assuming an image is unused), `assets/audio/` holds song preview MP3s referenced from `music.html`, `assets/epk/` holds the press kit PDF/zip linked from `epk.html`.
 
 **Email signup popup**: defined inline in `index.html` (not componentized) — a Substack embed iframe shown once per calendar day via a `localStorage` key keyed on `new Date().toDateString()`.
+
+**Videos** nav link goes straight to the YouTube channel; `videos.html` is just a redirect stub kept so old links still work.
 
 **Merch** links out to an external Fourthwall store rather than being hosted here; `merch/index.html` exists but the main nav links directly to `https://the-rounder-circle-shop.fourthwall.com`.
 
